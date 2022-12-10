@@ -1,0 +1,158 @@
+.Page {
+    background-color: #f8dcb5;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+html { 
+  background-color: #f8dcb5; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+:root {
+  --light: #eee;
+  --sabbia: #f8dcb5;
+  --darker: #262336;
+  --blue: #61DAFB;
+  --crimson: #df3053;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Fira sans', sans-serif;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000044;
+  backdrop-filter: blur(0.5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: left;
+}
+
+.popup-inner {
+  background-color: var(--sabbia);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 350px;
+  overflow: auto;
+  max-height: calc(100vh - 4rem);
+}
+
+.popup h2 {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.buttonSabbia {
+  background-color: var(--sabbia);
+  border: none;
+  color: black;
+  padding: 6px 17px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  border-radius: 6px;
+  user-select: none;
+}
+
+.buttonClose {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 6px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  border-radius: 6px;
+  user-select: none;
+}
+
+.buttonRemove {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+  user-select: none;
+}
+
+.buttonBlack {
+  background-color: #212529;
+  border: none;
+  color: white;
+  padding: 7px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 6px;
+  user-select: none;
+}
+
+
+.buttonSabbia:active{
+  background-color: #cab497;
+}
+
+.buttonSabbia:hover {
+  background-color: #cab497;
+}
+
+.buttonBlack:active {
+  background-color: #353b41;
+}
+
+.buttonBlack:hover {
+  background-color: #353b41;
+}
+
+.buttonRemove:active {
+  background-color: #a82d39;
+}
+
+.buttonRemove:hover {
+  background-color: #a82d39;
+}
+
+.buttonClose:active {
+  background-color: #a82d39;
+}
+
+.buttonClose:hover {
+  background-color: #a82d39;
+}
+
+
+  .linq {
+    text-decoration: none;
+  }
+
