@@ -1,4 +1,4 @@
-# -projectTechWeb
+# projectTechWeb
 React and Firebase
 
 Domain:
