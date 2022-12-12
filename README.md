@@ -1,5 +1,7 @@
 # projectTechWeb
 React and Firebase
+Domain:
+https://progtec-274d8.web.app/
 
 1.Install node js on your pc
 
@@ -21,5 +23,4 @@ used libraries:
 6.Run project:
 ### `npm start`
 
-Domain:
-https://progtec-274d8.web.app/
+
