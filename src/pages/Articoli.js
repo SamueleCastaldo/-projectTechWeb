@@ -160,35 +160,35 @@ function Articoli({ catId, catNome }) {
           <form>
                 <div className="form-outline form-white mb-4 ">
                   <label className='text-white'>Item</label>
-                  {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='nome collezione' onChange={(event) => {
+                  {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='name item' onChange={(event) => {
                     setNome(event.target.value);}}/>        :
                      <input className="form-control form-control-lg" type="text" placeholder={nome} onChange={(event) => {
                     setNome(event.target.value);}}/> }
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Descrizione</label>
-                  {!popupRem? <textarea className="form-control form-control-lg" type="text" placeholder='descrizione' onChange={(event) => {
+                  <label className='text-white'>Description</label>
+                  {!popupRem? <textarea className="form-control form-control-lg" type="text" placeholder='description' onChange={(event) => {
                     setDescrizione(event.target.value);}}/>        :
                      <textarea className="form-control form-control-lg" type="text" placeholder={descrizione} onChange={(event) => {
                     setDescrizione(event.target.value);}}/> }
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Marca</label>
-                  {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='marca' onChange={(event) => {
+                  <label className='text-white'>Brand</label>
+                  {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='brand' onChange={(event) => {
                     setMarca(event.target.value);}}/>        :
                      <input className="form-control form-control-lg" type="text" placeholder={marca} onChange={(event) => {
                     setMarca(event.target.value);}}/> }
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Prezzo unitario</label>
-                  {!popupRem? <input className="form-control form-control-lg" type="number" placeholder='prezzo unitario' onChange={(event) => {
+                  <label className='text-white'>Unit price</label>
+                  {!popupRem? <input className="form-control form-control-lg" type="number" placeholder='unit price' onChange={(event) => {
                     setPrezzo(event.target.value);}}/>        :
                      <input className="form-control form-control-lg" type="number" value={prezzo}  onChange={(event) => {
                     setPrezzo(event.target.value);}}/> }
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Quantità</label>
-                  {!popupRem? <input className="form-control form-control-lg" type="number" placeholder='quantità' onChange={(event) => {
+                  <label className='text-white'>Quantity</label>
+                  {!popupRem? <input className="form-control form-control-lg" type="number" placeholder='quantity' onChange={(event) => {
                     setQuantita(event.target.value);}}/>        :
                      <input className="form-control form-control-lg" type="number" value={quantita} onChange={(event) => {
                     setQuantita(event.target.value);}}/> }
@@ -221,7 +221,7 @@ function Articoli({ catId, catNome }) {
                 </div>
   
                 <div className="col-5"> {/* CENTRAL COLUMN */}
-                  <h2 className='text-center'><b>Articoli</b></h2>
+                  <h2 className='text-center'><b>Items</b></h2>
                      <input className="form-control me-2 mb-4 rounded-4 shadow" type="search" placeholder="Search" aria-label="Search" onChange={event => {setSearchTerm(event.target.value)}}/>
 
 

@@ -120,7 +120,7 @@ function Categoria({ colId, colNome, getCatId }) {
             <h2 className='text-white'>Edit a Category</h2>}  
           <form >
                 <div className="form-outline form-white mb-4">
-                {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='nome collezione' onChange={(event) => {
+                {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='name category' onChange={(event) => {
                     setNome(event.target.value);}}/>        :
                      <input className="form-control form-control-lg" type="text" placeholder={nome} onChange={(event) => {
                     setNome(event.target.value);}}/> }

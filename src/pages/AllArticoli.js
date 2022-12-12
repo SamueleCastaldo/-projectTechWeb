@@ -134,27 +134,27 @@ function AllArticoli({ catId, catNome }) {
                     setNome(event.target.value);}}/> 
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Descrizione</label>
+                  <label className='text-white'>Description</label>
                      <textarea className="form-control form-control-lg" type="text" placeholder={descrizione} onChange={(event) => {
                     setDescrizione(event.target.value);}}/> 
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Marca</label>
+                  <label className='text-white'>Brand</label>
                      <input className="form-control form-control-lg" type="text" placeholder={marca} onChange={(event) => {
                     setMarca(event.target.value);}}/> 
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Quantità</label>
+                  <label className='text-white'>Quantity</label>
                      <input className="form-control form-control-lg" type="number" value={quantita} onChange={(event) => {
                     setQuantita(event.target.value);}}/> 
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Prezzo unitario</label>
+                  <label className='text-white'>Unit price</label>
                      <input className="form-control form-control-lg" type="number" value={prezzo}  onChange={(event) => {
                     setPrezzo(event.target.value);}}/> 
                 </div>
                 <div className="form-outline form-white mb-4">
-                  <label className='text-white'>Immagine</label>
+                  <label className='text-white'>Image</label>
                     <input className="form-control form-control-lg" type="file" accept="image/png, image/jpeg" onChange={(event) => {
                     setImageUpload(event.target.files[0]);}}/>
                       <Button className='position-sticky' type="submit" variant="light me-2"  onClick={uploadImage}> Upload image</Button>
