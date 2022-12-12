@@ -13,8 +13,13 @@ used libraries:
 ### `npm install --save react-toastify`
 
 3.Overwrite the github files with those of the created application
+
 4.Create and configure the project on firebase for authentication, database and storage
-5.
+
+5.edit the firebase-config.js file with the data of the newly created project
+
+6.Run project:
+### `npm start`
 
 Domain:
 https://progtec-274d8.web.app/
