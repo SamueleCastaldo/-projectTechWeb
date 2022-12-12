@@ -6,15 +6,15 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import { notifyError } from '../components/Notify';
 
 function Categoria({ colId, colNome, getCatId }) {
-    const[cate, setCate] = useState([]); //collezione
+    const[cate, setCate] = useState([]); 
     
-    const cateCollectionRef = collection(db, "categoria"); //riferimeto alla collezione categoria
+    const cateCollectionRef = collection(db, "categoria"); 
 
     const [nome, setNome] = useState("");
 
     let navigate = useNavigate();
 
-    const [popupActive, setPopupActive] = useState(false);  //popup che si attiva quando premiamo il pulsante aggiungi
+    const [popupActive, setPopupActive] = useState(false);  
     const [popupRem, setPopupRem] = useState(false); 
 
 
@@ -30,10 +30,10 @@ function Categoria({ colId, colNome, getCatId }) {
       toast.clearWaitingQueue();
     }
     //_________________________________________________________________________________________________________________
-     //notifica conferma per rimuovere la categoria
+     //confirmation notification to remove the category
      const MsgCat = () => (
       <div>
-        Sei sicuro di voler eliminare la categoria?
+        Are you sure you want to delete the category?
         <button className='buttonSabbia ms-4 mt-2 me-1 rounded-4' onClick={RemoveCat}>Yes</button>
         <button className='buttonClose mt-2 rounded-4' >No</button>
       </div>
@@ -72,9 +72,9 @@ function Categoria({ colId, colNome, getCatId }) {
     }, [])
   //_________________________________________________________________________________________________________________
 
-    const deleteCate = async (id) => { //funzione per eliminare il post, solo se è lo stesso id utente
-      const postDoc = doc(db, "categoria", id);  //variablie per prendere in riferiemnto quel documento
-      await deleteDoc(postDoc);  //elimina il documento selezionato
+    const deleteCate = async (id) => { 
+      const postDoc = doc(db, "categoria", id);  
+      await deleteDoc(postDoc);  
     }
       //_________________________________________________________________________________________________________________
       const updateCate = async (e) => {
@@ -84,7 +84,7 @@ function Categoria({ colId, colNome, getCatId }) {
           toast.clearWaitingQueue(); 
           return
         } 
-      const CatDoc = doc(db, "categoria", localStorage.getItem("CatId"));   //verifichiamo che il libro è presente nella collezione
+      const CatDoc = doc(db, "categoria", localStorage.getItem("CatId"));   
          await updateDoc(CatDoc, {nome});
           setClear();
       };
@@ -106,19 +106,18 @@ function Categoria({ colId, colNome, getCatId }) {
   };
 //******************************************************************** */
 //******************************************************************** */
-                             //INTERFACCIA 
+                             //INTERFACE 
 //******************************************************************** */
 
     return  <><div className='Page'>
             <div className="container">
             <div> <ToastContainer limit={1} /> </div>
   {/***************************************************************************************************************************************/}
-          {/* POPUP AGGIUNGI CATEGORIA     Condizione tramite chiudi ritorna false, quindi scompare, non visualizza tutto il form aggiungi */}
+          {/* POPUP ADD CATEGORY */}
           {popupActive && <div className="popup">
         <div className="popup-inner bg-dark rounded-4">
           {!popupRem? <h2 className='text-white'>Add a Category</h2> :
             <h2 className='text-white'>Edit a Category</h2>}  
-          {/* quando si preme il plusante crea di tipo submit si attiva la funzione handleSubmit  */}
           <form >
                 <div className="form-outline form-white mb-4">
                 {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='nome collezione' onChange={(event) => {
@@ -160,7 +159,6 @@ function Categoria({ colId, colNome, getCatId }) {
                 </div>
               </div>
               
-          {/* Visualizza tutte le collezioni create dall'utente che ha effettuato l'accesso*/}
                 {cate.map((cat) => (
                   <div key={cat.id}>
                   {cat.author.id === auth.currentUser.uid && cat.colId === colId && (

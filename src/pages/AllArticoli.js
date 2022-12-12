@@ -10,9 +10,9 @@ import {v4} from "uuid"
 import { notiUploadImage, notifyErrorImage, notifyErrorArt } from '../components/Notify';
 
 function AllArticoli({ catId, catNome }) {
-    const[arti, setArti] = useState([]); //collezione
+    const[arti, setArti] = useState([]); 
     
-    const artCollectionRef = collection(db, "articoli"); //riferimeto alla collezione categoria
+    const artCollectionRef = collection(db, "articoli"); 
 
     const [nome, setNome] = useState("");
     const [marca, setMarca] = useState("");
@@ -33,7 +33,6 @@ function AllArticoli({ catId, catNome }) {
     const [popupRem, setPopupRem] = useState(false);  
 //_________________________________________________________________________________________________________________
     const back = () => {
-      console.log(localStorage.getItem("catId"));
         navigate("/");
     }
   //_________________________________________________________________________________________________________________
@@ -50,7 +49,7 @@ function AllArticoli({ catId, catNome }) {
       toast.dismiss();
       toast.clearWaitingQueue(); }
   //_________________________________________________________________________________________________________________
-    useEffect(() => {  //si attiva ogni volta che si ricarica la pagina
+    useEffect(() => {  
       onSnapshot(artCollectionRef, onSnapshot => {
         setArti(onSnapshot.docs.map(doc => {
           return {
@@ -63,28 +62,28 @@ function AllArticoli({ catId, catNome }) {
   //_________________________________________________________________________________________________________________
     const deleteImage = (imageId) => {
       const imageRef = ref(storage, imageId );
-      deleteObject(imageRef).then(() => {     //funzione che permette l'eliminazione dell'immagine
+      deleteObject(imageRef).then(() => {     
       });
     }
   //______________________________________________________________________________________________________________     
-    const deleteArt = async (id) => { //funzione per eliminare il documento
+    const deleteArt = async (id) => { 
       const postDoc = doc(db, "articoli", id);  
       await deleteDoc(postDoc);  
     }
     //_________________________________________________________________________________________________________________
-    const updateArt = async (e) => {    //permette la modifica del documento
+    const updateArt = async (e) => {    
       e.preventDefault(); 
-      if(!nome || !marca || !descrizione  || !quantita || !prezzo || quantita<0 || prezzo<0) {  //uno di questi campi vuoti compare la notifica
+      if(!nome || !marca || !descrizione  || !quantita || !prezzo || quantita<0 || prezzo<0) {  
         notifyErrorArt();
         toast.clearWaitingQueue(); 
         return; }
-        if (imageUpload && !flagUpImg) {  //se l'immagine viene inserita, ma non caricata compare la notifica
+        if (imageUpload && !flagUpImg) {  
           toast.dismiss();
           toast.clearWaitingQueue();
           notifyErrorImage();
           return; } 
     const ArtDoc = doc(db, "articoli", localStorage.getItem("ArtId"));
-       await updateDoc(ArtDoc, {    //aggiornamento del documento
+       await updateDoc(ArtDoc, {    
         nome,
         marca,
         imageUrls,
@@ -97,17 +96,17 @@ function AllArticoli({ catId, catNome }) {
         setClear();
     }; 
     //_________________________________________________________________________________________________________________
-      const uploadImage = (e) => {  //permette di caricare l'immagine nello storage, e setImageUrls prende come valore il suo url, viene attivata quando si preme carica immagine
+      const uploadImage = (e) => {  
         e.preventDefault();
-        if (imageUpload == null) {  //immagine non inserita
-          notifyErrorImage();           //compare la notifica di errore
+        if (imageUpload == null) {  
+          notifyErrorImage();           
           toast.clearWaitingQueue(); 
           return; }
-          localStorage.setItem("imageId", `images/${imageUpload.name + v4()}`) //mi serve dopo per eliminare l'immagine, quindi la salvo nella trupla (imageUpp)
-        const imageRef = ref(storage, localStorage.getItem("imageId"));  //prende il riferimento
+          localStorage.setItem("imageId", `images/${imageUpload.name + v4()}`) 
+        const imageRef = ref(storage, localStorage.getItem("imageId"));  
         uploadBytes(imageRef, imageUpload).then((snapshot) => {
           getDownloadURL(snapshot.ref).then((url) => {
-            setImageUrls(url);    //prende l'url dell'immagine
+            setImageUrls(url);    
             toast.dismiss();
             notiUploadImage();
             setFlagUpImg(true);
@@ -123,12 +122,11 @@ function AllArticoli({ catId, catNome }) {
             <div className="container">
             <div> <ToastContainer limit={1} /> </div>
 {/***************************************************************************************************************************************/}
-          {/* POPUP FORM INSERIMENTO ARTICOLI     Condizione tramite chiudi ritorna false, quindi scompare, non visualizza tutto il form aggiungi */}
+          {/* POPUP FORM TO ENTER ALL ITEMS */}
       {popupActive && <div className="popup">
         <div className="popup-inner bg-dark rounded-4">
 
             <h2 className='text-white'>Edit Item</h2>
-          {/* quando si preme il plusante crea di tipo submit si attiva la funzione handleSubmit  */}
           <form>
                 <div className="form-outline form-white mb-4 ">
                   <label className='text-white'>Item</label>     :
@@ -181,7 +179,7 @@ function AllArticoli({ catId, catNome }) {
                     <button className='buttonBlack' onClick={back}>Back</button>
                 </div>
   
-                <div className="col-5"> {/*COLONNA CENTRALE */}
+                <div className="col-5"> {/* CENTRAL COLUMN */}
                   <h2 className='text-center'><b>All Item</b></h2>
                      <input className="form-control me-2 mb-4 rounded-4 shadow" type="search" placeholder="Search" aria-label="Search" onChange={event => {setSearchTerm(event.target.value)}}/>
                 </div>     
@@ -189,7 +187,7 @@ function AllArticoli({ catId, catNome }) {
                 <div className="col"></div>
               </div>
   {/***************************************************************************************************************************************/}
-    {/* VISUALIZZA  TUTTI GLI ARTICOLI DELL'UTENTE*/}
+    {/* VIEW ALL USER ARTICLES */}
               {arti.filter((val) => {       //search
                 if(searchTerm == "") {
                   return val

@@ -11,10 +11,11 @@ import { notiUploadImage, notifyErrorImage, notifyErrorArt } from '../components
 
 
 function Articoli({ catId, catNome }) {
-    const[arti, setArti] = useState([]); //collezione
+    const[arti, setArti] = useState([]); 
     
-    const artCollectionRef = collection(db, "articoli"); //riferimeto alla collezione categoria
+    const artCollectionRef = collection(db, "articoli"); //reference to the collection items
 
+    //attributes
     const [nome, setNome] = useState("");
     const [marca, setMarca] = useState("");
     const [descrizione, setDescrizione] = useState("");
@@ -23,22 +24,21 @@ function Articoli({ catId, catNome }) {
     const [quantita, setQuantita] = useState(0);
     const [prezzo, setPrezzo] = useState(0);
 
-    const [imageUpload, setImageUpload] = useState(null);
-    const [flagUpImg, setFlagUpImg] = useState(false);
+    const [imageUpload, setImageUpload] = useState(null); //id upload image
+    const [flagUpImg, setFlagUpImg] = useState(false);  //flag image
 
-    const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");  //search
 
     let navigate = useNavigate();
 
-    const [popupActive, setPopupActive] = useState(false);
-    const [popupRem, setPopupRem] = useState(false);  
+    const [popupActive, setPopupActive] = useState(false); //falg popup
+    const [popupRem, setPopupRem] = useState(false);  //flag for edit or create popup
 
     const back = () => {
-      console.log(localStorage.getItem("catId"));
         navigate("/categoria");
     }
   //_________________________________________________________________________________________________________________
-    const setClear = () => {
+    const setClear = () => { //empty attributes
       setNome("");
       setMarca("");
       setDescrizione("");
@@ -51,7 +51,7 @@ function Articoli({ catId, catNome }) {
       toast.dismiss();
       toast.clearWaitingQueue(); }
   //_________________________________________________________________________________________________________________
-    useEffect(() => {  //si attiva ogni volta che si ricarica la pagina
+    useEffect(() => {  //it activates every time the page is reloaded
       onSnapshot(artCollectionRef, onSnapshot => {
         setArti(onSnapshot.docs.map(doc => {
           return {
@@ -64,23 +64,23 @@ function Articoli({ catId, catNome }) {
   //_________________________________________________________________________________________________________________
     const deleteImage = (imageId) => {
       const imageRef = ref(storage, imageId );
-      deleteObject(imageRef).then(() => {     //funzione che permette l'eliminazione dell'immagine
+      deleteObject(imageRef).then(() => {     //function that allows the elimination of the image
         console.log("immagine eliminata, nice");
       });
     }
   //______________________________________________________________________________________________________________     
-    const deleteArt = async (id) => { //funzione per eliminare il documento
-      const postDoc = doc(db, "articoli", id);  
-      await deleteDoc(postDoc);  
+    const deleteArt = async (id) => { //function to delete the document, only if it is the same user id
+      const postDoc = doc(db, "articoli", id);   //variables to reference that document
+      await deleteDoc(postDoc);  //delete the selected document
     }
     //_________________________________________________________________________________________________________________
-    const updateArt = async (e) => {    //permette la modifica del documento
+    const updateArt = async (e) => {    //allows editing of the document
       e.preventDefault(); 
-      if(!nome || !marca || !descrizione || !quantita || !prezzo || quantita<0 || prezzo<0) {  //uno di questi campi vuoti compare la notifica
+      if(!nome || !marca || !descrizione || !quantita || !prezzo || quantita<0 || prezzo<0) {  //one of these empty fields the notification appears
         notifyErrorArt();
         toast.clearWaitingQueue(); 
         return; }
-        if (imageUpload && !flagUpImg) {  //se l'immagine viene inserita, ma non caricata compare la notifica
+        if (imageUpload && !flagUpImg) {  //if the image is inserted, but not loaded, the notification appears
           toast.dismiss();
           toast.clearWaitingQueue();
           notifyErrorImage();
@@ -99,17 +99,17 @@ function Articoli({ catId, catNome }) {
         setClear();
     }; 
     //_________________________________________________________________________________________________________________
-      const uploadImage = (e) => {  //permette di caricare l'immagine nello storage, e setImageUrls prende come valore il suo url, viene attivata quando si preme carica immagine
+      const uploadImage = (e) => {  //allows to upload the image to the storage, and setImageUrls takes its url as value, it is activated when upload image is pressed
         e.preventDefault();
-        if (imageUpload == null) {  //immagine non inserita
+        if (imageUpload == null) {  //image not inserted
           notifyErrorImage();
           toast.clearWaitingQueue(); 
           return; }
-          localStorage.setItem("imageId", `images/${imageUpload.name + v4()}`) //mi serve dopo per eliminare l'immagine, quindi la salvo nella trupla (imageUpp)
-        const imageRef = ref(storage, localStorage.getItem("imageId"));  //prende il riferimento
+          localStorage.setItem("imageId", `images/${imageUpload.name + v4()}`) // I need it later to delete the image, so I save it in trupla (imageUpp)
+        const imageRef = ref(storage, localStorage.getItem("imageId"));  //takes the reference
         uploadBytes(imageRef, imageUpload).then((snapshot) => {
           getDownloadURL(snapshot.ref).then((url) => {
-            setImageUrls(url);    //prende l'url dell'immagine
+            setImageUrls(url);    //takes the url of the image
             toast.dismiss();
             notiUploadImage();
             setFlagUpImg(true);
@@ -117,7 +117,7 @@ function Articoli({ catId, catNome }) {
         });
       }
   //_________________________________________________________________________________________________________________
-  const createArt = async (e) => {   //premette la creazione del documento
+  const createArt = async (e) => {   //allows the creation of the document
     e.preventDefault(); 
     if(!nome || !marca || !descrizione  || !quantita || !prezzo || quantita<0 || prezzo<0) {
       notifyErrorArt();
@@ -144,19 +144,19 @@ function Articoli({ catId, catNome }) {
   };
 //******************************************************************** */
 //******************************************************************** */
-                             //INTERFACCIA 
+                             //INTERFACE 
 //******************************************************************** */
 
     return  <><div className='Page'>
             <div className="container">
             <div> <ToastContainer limit={1} /> </div>
             {/***************************************************************************************************************************************/}
-          {/* POPUP FORM INSERIMENTO ARTICOLI     Condizione tramite chiudi ritorna false, quindi scompare, non visualizza tutto il form aggiungi */}
+          {/* POPUP FORM FOR INSERTING ITEMS     Condition via close returns false, then disappears, does not display all add form */}
       {popupActive && <div className="popup">
         <div className="popup-inner bg-dark rounded-4">
           {!popupRem? <h2 className='text-white'>Add a Item</h2> :
             <h2 className='text-white'>Edit a Item</h2>}  
-          {/* quando si preme il plusante crea di tipo submit si attiva la funzione handleSubmit  */}
+          {/* when you press the plus button creates of type submit the handleSubmit function is activated  */}
           <form>
                 <div className="form-outline form-white mb-4 ">
                   <label className='text-white'>Item</label>
@@ -220,7 +220,7 @@ function Articoli({ catId, catNome }) {
                     <h3>{catNome}</h3>
                 </div>
   
-                <div className="col-5"> {/*COLONNA CENTRALE */}
+                <div className="col-5"> {/* CENTRAL COLUMN */}
                   <h2 className='text-center'><b>Articoli</b></h2>
                      <input className="form-control me-2 mb-4 rounded-4 shadow" type="search" placeholder="Search" aria-label="Search" onChange={event => {setSearchTerm(event.target.value)}}/>
 
@@ -235,7 +235,7 @@ function Articoli({ catId, catNome }) {
                 </div>
               </div>
   {/***************************************************************************************************************************************/}
-                    {/* VISUALIZZA  TUTTI GLI ARTICOLI DI QUELLA SPECIFICA CATEGORIA*/}
+                    {/* VIEW ALL ITEMS IN THAT SPECIFIC CATEGORY */}
               {arti.filter((val) => {       //search
                 if(searchTerm == "") {
                   return val

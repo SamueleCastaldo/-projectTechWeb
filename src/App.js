@@ -18,26 +18,26 @@ import usePWAInstall from 'use-pwa-install';
 
 
 function App() {  
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); //legge il valore dell'indice 
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth")); //read the value of the index
 
-  const [colId, setColId] = useState(localStorage.getItem("colId")); //variabile che prende l'id
-  const [colNome, setColNome] = useState(localStorage.getItem("colNome")); //variabile che salva il nome della collezione
+  const [colId, setColId] = useState(localStorage.getItem("colId")); //variable that takes the collection id
+  const [colNome, setColNome] = useState(localStorage.getItem("colNome")); //variable that stores the name of the collection
 
-  const [catId, setCatId] = useState(localStorage.getItem("catId")); 
-  const [catNome, setCatNome] = useState(localStorage.getItem("catNome")); 
+  const [catId, setCatId] = useState(localStorage.getItem("catId"));  //variable that takes the category id
+  const [catNome, setCatNome] = useState(localStorage.getItem("catNome")); //variable that stores the category name
   
 
-  const { isInstalled, install } = usePWAInstall();  //variabile usata per installare l'app, sui device
+  const { isInstalled, install } = usePWAInstall();  //variable used to install the app, on devices
 
   const getColIdHandler = (id, nome) => {
-    localStorage.setItem("colId", id); //salva il valore localmente
+    localStorage.setItem("colId", id); //save the value locally
     localStorage.setItem("colNome", nome); 
     setColId(id);
     setColNome(nome);
   };
 
   const getCatIdHandler = (id, nome) => {
-    localStorage.setItem("catId", id); //modifica il valore localmente
+    localStorage.setItem("catId", id); //edit the value locally
     localStorage.setItem("catNome", nome);
     setCatId(id);
     setCatNome(nome);
@@ -95,10 +95,10 @@ function App() {
 
 export default App;
 
-/*localStorage serve per salvare il valore anche dopo il ricaricamento della pagina, tramite indice
-setItem(key, value): memorizza la coppia key/value.
-getItem(key): lettura del valore dalla key.
-removeItem(key): rimuove la key, ed il relativo value.
-clear(): rimuove tutti gli elementi.
-key(index): lettura della key all’indice index.
-length: il numero di oggetti archiviati. */
+/* localStorage is used to save the value even after reloading the page, via index
+setItem(key, value): stores the key/value pair.
+getItem(key): reading the value from the key.
+removeItem(key): removes the key, and its value.
+clear(): remove all elements.
+key(index): reading the key at index index.
+length: The number of items stored. */

@@ -9,12 +9,12 @@ import { ToastContainer, toast} from 'react-toastify';
 import { errorLogin } from '../components/Notify';
 
 function Login({setIsAuth}) {
-  let navigate = useNavigate();  //variabile che serve per utilizzare navigate
+  let navigate = useNavigate();  
 
-  const emailRef = useRef();
+  const emailRef = useRef();      //attributes
   const passwordRef = useRef();
  //_______________________________________________________________________________________
-  const signInwithFacebook = () => {
+  const signInwithFacebook = () => { //function for login with facebook
     signInWithPopup(auth, providerFacebook).then((result) => {
       console.log("facebook");
       const email = result.user.email;
@@ -23,12 +23,12 @@ function Login({setIsAuth}) {
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);  
-      navigate("/");  //lo riporta alla pagina home
+      setIsAuth(true);  //flag the user is logged ins
+      navigate("/");  //returns it to the home page
     })
   }
 //_______________________________________________________________________________________
-  const signInwithGoogle = () => {  //funzione per connessione con google
+  const signInwithGoogle = () => {  //function for login with google
     signInWithPopup(auth, providerGoogle).then((result) => {
       const email = result.user.email;
       const profilePic = result.user.photoURL;
@@ -36,20 +36,20 @@ function Login({setIsAuth}) {
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);  //diventa vero
-      navigate("/");  //lo riporta alla pagina home
+      setIsAuth(true);  //flag the user is logged in
+      navigate("/");  //returns it to the home page
     })
   }
 //___________________________________________________________________________________________
-  async function handelLogin () {
+  async function handelLogin () {    //login function
     try {
       await login(emailRef.current.value, passwordRef.current.value).then((result) => {
         const email = result.user.email;
   
         localStorage.setItem("email", email);
         localStorage.setItem("isAuth", true);
-        setIsAuth(true);  //diventa vero
-        navigate("/");  //lo riporta alla pagina home
+        setIsAuth(true);  //flag the user is logged in
+        navigate("/");  //returns it to the home page
       })
     } catch{
         errorLogin();
@@ -59,11 +59,11 @@ function Login({setIsAuth}) {
   }
 //_____________________________________________________________________________________________
 const singup = () => {
-  navigate("/signup");
+  navigate("/signup");   //I report it to the sign up page
 }
 
 const forgotPassword = () => {
-  navigate("/recoverpassword");
+  navigate("/recoverpassword");  //I report it to the recover password page
 }
 //___________________________________________________________________________________________
   return (

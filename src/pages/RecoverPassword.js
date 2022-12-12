@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { errorRecover, successRecover } from '../components/Notify';
 
 function RecoverPassword() {
-  let navigate = useNavigate();  //variabile che serve per utilizzare navigate
+  let navigate = useNavigate();  
 
   const emailRef = useRef();
 //___________________________________________________________________________________________
@@ -30,7 +30,7 @@ const navLogin = () => {
     <>
     <div className='Page'>  
     <div className="ciao container">
-    <div> <ToastContainer limit={1} /> </div> {/* Serve per far comparire la notifica toastify, con il limite di uno alla volta */}
+    <div> <ToastContainer limit={1} /> </div> {/* It is used to show the toastify notification, with a limit of one at a time */}
   <section className="gradient-custom">
   <div className="container py-1">
     <div className="row d-flex justify-content-center align-items-center h-70">

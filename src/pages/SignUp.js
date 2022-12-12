@@ -8,7 +8,7 @@ import { signup } from '../firebase-config';
 import { errorRegi } from '../components/Notify';
 
 function SignUp({setIsAuth}) {
-  let navigate = useNavigate();  //variabile che serve per utilizzare navigate
+  let navigate = useNavigate();  
 
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -21,16 +21,16 @@ function SignUp({setIsAuth}) {
       localStorage.setItem("email", email);
       localStorage.setItem("profilePic", profilePic);
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);  //diventa vero
-      navigate("/");  //lo riporta alla pagina home
+      setIsAuth(true);  
+      navigate("/"); 
     })
   }
 //______________________________________________________________________________________
-  const signInwithGoogle = () => {  //funzione per connessione con google
+  const signInwithGoogle = () => {  
     signInWithPopup(auth, providerGoogle).then((result) => {
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);  //diventa vero
-      navigate("/");  //lo riporta alla pagina home
+      setIsAuth(true);  
+      navigate("/");  
     })
   }
 //_______________________________________________________________________________________

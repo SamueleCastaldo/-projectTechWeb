@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 import { notifyError } from '../components/Notify';
 
 function Collezione({ getColId }) {
-    const[colle, setColle] = useState([]); //collezione
-    const colleCollectionRef = collection(db, "collezione"); //riferimeto alla collezione posts
+    const[colle, setColle] = useState([]); 
+    const colleCollectionRef = collection(db, "collezione"); 
 
     const [nome, setNome] = useState("");
 
     let navigate = useNavigate();
 
-    const [popupActive, setPopupActive] = useState(false);  //popup che si attiva quando premiamo il pulsante aggiungi
+    const [popupActive, setPopupActive] = useState(false);  
     const [popupRem, setPopupRem] = useState(false); 
 
 
@@ -25,10 +25,10 @@ function Collezione({ getColId }) {
       toast.dismiss();
       toast.clearWaitingQueue();}
    //_________________________________________________________________________________________________________________
-     //notifica conferma per rimuovere la collezione
+     //confirmation notification to remove the collection
     const Msg = () => (
       <div>
-        Sei sicuro di voler eliminare la collezione?
+        Do you want to delete the collection?
         <button className='buttonSabbia ms-4 mt-2 me-1 rounded-4' onClick={Remove}>Yes</button>
         <button className='buttonClose mt-2 rounded-4'>No</button>
       </div>
@@ -65,9 +65,9 @@ function Collezione({ getColId }) {
     }, [])
   //_________________________________________________________________________________________________________________
 
-    const deleteCol = async (id) => { //funzione per eliminare il post, id documento
-        const colDoc = doc(db, "collezione", id);  //variablie per prendere in riferiemnto quel documento
-        await deleteDoc(colDoc);  //elimina il documento selezionato
+    const deleteCol = async (id) => { 
+        const colDoc = doc(db, "collezione", id); 
+        await deleteDoc(colDoc);  
     }
   //_________________________________________________________________________________________________________________
     const updateCol = async (e) => {
@@ -77,14 +77,14 @@ function Collezione({ getColId }) {
         toast.clearWaitingQueue(); 
         return
       } 
-    const ColDoc = doc(db, "collezione", localStorage.getItem("ColId"));   //riferimento al documento specifico
+    const ColDoc = doc(db, "collezione", localStorage.getItem("ColId"));   
        await updateDoc(ColDoc, {nome});
         setClear();
     }; 
   //_________________________________________________________________________________________________________________
-  const createCol = async (e) => {    // funzione crea  collezione
-    e.preventDefault();  //previene il ricaricamento della pagina
-    if(!nome) {            //nome non definito, si attiva la notifica
+  const createCol = async (e) => {    
+    e.preventDefault();  
+    if(!nome) {            
       notifyError();
       toast.clearWaitingQueue(); 
       return
@@ -98,19 +98,19 @@ function Collezione({ getColId }) {
 
 //*************************************************************** */
 //************************************************************** */
-//          INTERFACCIA                                           /
+//          INTERFACE                                           /
 //************************************************************** */
     return ( 
     <> <div className='Page'>
             <div className="container">
               <div><ToastContainer limit={1} /></div>
   {/***************************************************************************************************************************************/}
-          {/* POPUP AGGIUNGI COLLEZIONE     Condizione tramite chiudi ritorna false, quindi scompare, non visualizza tutto il form aggiungi */}
+          {/* POPUP ADD COLLECTION */}
           {popupActive && <div className="popup">
         <div className="popup-inner bg-dark rounded-4">
           {!popupRem ? <h2 className='text-white'>Add a Collection</h2> :
             <h2 className='text-white'>Edit a Collection</h2>}
-          {/* quando si preme il plusante crea di tipo submit si attiva la funzione handleSubmit  */}
+
          { <form >
                 <div className="form-outline form-white mb-4">
                   {!popupRem? <input className="form-control form-control-lg" type="text" placeholder='nome collezione' onChange={(event) => {
@@ -147,7 +147,6 @@ function Collezione({ getColId }) {
                 </div>
               </div>
 
-        {/* Visualizza tutte le collezioni create dall'utente che ha effettuato l'accesso*/}
                 {colle.map((col) => (
                   <div key={col.id}>
                   {col.author.id === auth.currentUser.uid && (

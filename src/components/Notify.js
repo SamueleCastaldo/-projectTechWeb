@@ -1,7 +1,7 @@
 import { toast, Slide } from 'react-toastify';
 
 export function notifyError () {
-    toast.error('Per favore inserisci il nome', {
+    toast.error('Please enter the name', {
         position: "top-center",
         autoClose: false,
         hideProgressBar: false,
@@ -15,9 +15,8 @@ export function notifyError () {
         });
 }
 //________________________________________________________________________
-            //NOTIFICHE PER ARTICOLI
 export function notiUploadImage () {
-    toast.success("Immagine caricata con successo", {
+    toast.success("Image uploaded successfully", {
         position: "top-center",
         autoClose: 1000,
         hideProgressBar: false,
@@ -32,7 +31,7 @@ export function notiUploadImage () {
 }
 //_____________________________________________________________________________________
 export function notifyErrorImage () {
-    toast.error("Per favore inserisci e carica l'immagine", {
+    toast.error("Please insert and upload the image", {
         position: "top-center",
         autoClose: false,
         hideProgressBar: false,
@@ -47,7 +46,7 @@ export function notifyErrorImage () {
 }
 //_____________________________________________________________________________________
 export function notifyErrorArt () {
-        toast.error('Per favore inserisci tutti i campi, oppure valori negativi non accettati', {
+        toast.error('Please enter all fields, or negative values ​​are not accepted', {
           position: "top-center",
           autoClose: false,
           hideProgressBar: false,
@@ -62,7 +61,7 @@ export function notifyErrorArt () {
 }
 //_____________________________________________________________________________________
 export function errorRegi() {
-    toast.error("Account già registrato o password debole", {
+    toast.error("Account already registered or weak password", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -76,7 +75,7 @@ export function errorRegi() {
 }
 //_____________________________________________________________________________________
 export function errorLogin() {
-    toast.error("Email o password sbagliata", {
+    toast.error("Wrong email or password", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -90,7 +89,7 @@ export function errorLogin() {
 }
 //_____________________________________________________________________________________
 export function errorRecover() {
-    toast.error("Email non trovata", {
+    toast.error("Email not found", {
         position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
@@ -104,7 +103,7 @@ export function errorRecover() {
 }
 //_____________________________________________________________________________________
 export function successRecover () {
-    toast.success("controlla la casella di posta, anche nello spam", {
+    toast.success("Check your inbox, even spam", {
         position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
