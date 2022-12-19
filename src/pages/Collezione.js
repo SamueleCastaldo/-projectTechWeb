@@ -122,9 +122,9 @@ function Collezione({ getColId }) {
                     <div className='row'>
                       <div className='col'></div>
                       <div className='col-7'>
-                        {!popupRem? <button className='buttonSabbia me-1' type="submit"  onClick={createCol} > Create</button>:
+                        <button className='buttonClose me-1' onClick={setClear}>Close</button>
+                        {!popupRem? <button className='buttonSabbia' type="submit"  onClick={createCol} > Create</button>:
                         <button className='buttonSabbia me-1' type="submit" onClick={updateCol} > Edit</button>}
-                        <button className='buttonClose' onClick={setClear}>Close</button>
                     </div>
                   </div>
                   </div>

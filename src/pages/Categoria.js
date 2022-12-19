@@ -130,9 +130,9 @@ function Categoria({ colId, colNome, getCatId }) {
                     <div className='row'>
                       <div className='col'></div>
                       <div className='col-7'>
-                      {!popupRem? <button className='buttonSabbia me-1' type="submit" onClick={createCate} > Create</button>:
-                        <button className='buttonSabbia me-1' type="submit" onClick={updateCate} > Edit</button>}
-                        <button className='buttonClose' onClick={setClear} >Close</button>
+                      <button className='buttonClose  me-1' onClick={setClear} >Close</button>
+                      {!popupRem? <button className='buttonSabbia' type="submit" onClick={createCate} > Create</button>:
+                        <button className='buttonSabbia me-1' type="submit" onClick={updateCate} > Edit</button>}  
                     </div>
                   </div>
                   </div>

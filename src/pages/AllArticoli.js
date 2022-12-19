@@ -126,7 +126,7 @@ function AllArticoli({ catId, catNome }) {
       {popupActive && <div className="popup">
         <div className="popup-inner bg-dark rounded-4">
 
-            <h2 className='text-white'>Edit Item</h2>
+            <h2 className='text-white'>Edit Items</h2>
           <form>
                 <div className="form-outline form-white mb-4 ">
                   <label className='text-white'>Item</label>     :
@@ -180,7 +180,7 @@ function AllArticoli({ catId, catNome }) {
                 </div>
   
                 <div className="col-5"> {/* CENTRAL COLUMN */}
-                  <h2 className='text-center'><b>All Item</b></h2>
+                  <h2 className='text-center'><b>All Items</b></h2>
                      <input className="form-control me-2 mb-4 rounded-4 shadow" type="search" placeholder="Search" aria-label="Search" onChange={event => {setSearchTerm(event.target.value)}}/>
                 </div>     
       
@@ -205,10 +205,10 @@ function AllArticoli({ catId, catNome }) {
                       </div>
                         <div className="col">
                         <h3><b>{ art.nome }</b></h3>
-                        <h5>Marca: <b>{art.marca}</b></h5>
-                        <h5>quantità: {art.quantita}</h5>
-                        <h5>Prezzo unitario: {art.prezzo}€</h5>
-                        <h5>Categoria: <b>{art.catNom}</b></h5>
+                        <h5><b>Brand:</b> <b>{art.marca}</b></h5>
+                        <h5><b>Quantity:</b> {art.quantita}</h5>
+                        <h5><b>Unit price:</b> {art.prezzo}€</h5>
+                        <h5><b>Category:</b> <b>{art.catNom}</b></h5>
                         </div>
                         <div className="col">                
                           <button className='buttonRemove mt-2 me-1 rounded-4 float-end' onClick={() => {

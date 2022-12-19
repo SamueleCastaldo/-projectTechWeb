@@ -58,7 +58,7 @@ function App() {
 
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
     <Container>
-      <Navbar.Brand > <Link className='linq text-white' to="/allarticoli">All Item</Link> </Navbar.Brand>
+      <Navbar.Brand > <Link className='linq text-white' to="/allarticoli">All Items</Link> </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">

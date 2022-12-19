@@ -204,9 +204,9 @@ function Articoli({ catId, catNome }) {
                     <div className='row'>
                       <div className='col'></div>
                       <div className='col-7'>
-                      {!popupRem? <button className='buttonSabbia me-1' type="submit" onClick={createArt} > Create</button>:
+                        <button className='buttonClose  me-1' onClick={(setClear)} >Close</button>
+                      {!popupRem? <button className='buttonSabbia' type="submit" onClick={createArt} > Create</button>:
                         <button className='buttonSabbia me-1' type="submit" onClick={updateArt} > Edit</button>}
-                        <button className='buttonClose' onClick={(setClear)} >Close</button>
                     </div>
                   </div>
                   </div>
@@ -253,10 +253,10 @@ function Articoli({ catId, catNome }) {
                         </div>
                         <div className="col">
                           <h2><b>{ art.nome }</b></h2>
-                          <h4>Marca: <b>{art.marca}</b></h4>
-                          <h4>Descrizione: {art.descrizione}</h4>
-                          <h4>quantità: {art.quantita}</h4>
-                          <h4>Prezzo unitario:{art.prezzo}€</h4>
+                          <h4><b>Brand:</b> {art.marca}</h4>
+                          <h4><b>Description:</b> {art.descrizione}</h4>
+                          <h4><b>Quantity:</b> {art.quantita}</h4>
+                          <h4><b>Unit price:</b> {art.prezzo}€</h4>
                         </div>
                         <div className="col">                
                           <button className='buttonRemove mt-2 me-1 rounded-4 float-end' onClick={() => {
